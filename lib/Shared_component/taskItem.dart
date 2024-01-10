@@ -12,17 +12,18 @@ Widget buildTaskItem(Map model,context)=> Dismissible(
       child: Row(
         children: [
            CircleAvatar(
-            radius: 45,
+            radius: 35,
             backgroundColor: Colors.grey,
-            child: Text("${model['time']}",style:  TextStyle(fontSize: 20,color: Colors.blueGrey[800])),
+            child: Text("${model['time']}",style:  TextStyle(fontSize: 16,color: Colors.blueGrey[800])),
           ),
-          const SizedBox(width: 30),
+          const SizedBox(width: 20),
           Expanded(
+            flex: 2,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                 Text("${model['title']}",style: const TextStyle(fontSize: 25)),
-                Text("${model['date']}",style: TextStyle(fontSize: 20,color: Colors.blueGrey[800])),
+                 Text("${model['title']}",style: const TextStyle(fontSize: 18)),
+                Text("${model['date']}",style: TextStyle(fontSize: 15,color: Colors.blueGrey[800])),
               ],
             ),
           ),

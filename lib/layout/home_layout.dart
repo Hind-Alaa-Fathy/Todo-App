@@ -30,15 +30,15 @@ class HomeLayout extends StatelessWidget {
               return Scaffold(
             key: scaffoldKey,
             appBar: AppBar(
-              backgroundColor: Colors.blueGrey[700],
+              backgroundColor: Colors.blueGrey[600],
               title: Text(cubit.texts[cubit.currentIndex]),
 
             ),
-            backgroundColor: Colors.teal[900],
+            backgroundColor: Colors.cyan[900],
             bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: Colors.blueGrey[800],
+              backgroundColor: Colors.blueGrey[600],
               currentIndex: TodoCubit.get(context).currentIndex,
-              selectedItemColor: Colors.blueGrey[600],
+              selectedItemColor: Colors.blueGrey[400],
               items: const [
                 BottomNavigationBarItem(icon: Icon(Icons.task), label: "Tasks",),
                 BottomNavigationBarItem(icon: Icon(Icons.check_circle), label: "Done"),
@@ -53,7 +53,7 @@ class HomeLayout extends StatelessWidget {
             body: state is! TodoGetDatabaseLoadingState ? cubit.screens[cubit.currentIndex] : const CircularProgressIndicator(color:Colors.orange),
             floatingActionButton: FloatingActionButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-              backgroundColor: Colors.blueGrey[700],
+              backgroundColor: Colors.blueGrey[600],
               onPressed: () {
                 if (cubit.isBottomSheetShown) {
                   if (formKey.currentState!.validate()) {
@@ -76,7 +76,7 @@ class HomeLayout extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(20),
                             width: double.infinity,
-                            color: Colors.blueGrey[700],
+                            color: Colors.blueGrey[400],
                             child: SingleChildScrollView(
                               child: Form(
                                 key: formKey,

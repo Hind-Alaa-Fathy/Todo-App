@@ -44,9 +44,7 @@ class TodoCubit extends Cubit<TodoStates>
       version: 1,
       onCreate: (db, version) {
         print("database created");
-        db.execute(
-            'CREATE TABLE tasks(id INTEGER PRIMARY KEY,title TEXT,date TEXT, time TEXT, status TEXT)')
-            .then((value) {
+        db.execute('CREATE TABLE tasks(id INTEGER PRIMARY KEY,title TEXT,date TEXT, time TEXT, status TEXT)').then((value) {
           print("table created");
         }).catchError((error) {
           print("Error when creating table ${error.toString()}");
@@ -117,7 +115,7 @@ class TodoCubit extends Cubit<TodoStates>
         'UPDATE tasks SET status = ? WHERE id = ?',
         [status, id]).then((value) {
          getDataFromDatabase(database);
-          emit(TodoGetDatabaseState());
+          emit(TodoUpdateDatabaseState());
 
     });
   }

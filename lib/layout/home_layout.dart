@@ -88,7 +88,7 @@ class HomeLayout extends StatelessWidget {
                                       keyboardType: TextInputType.text,
                                       prefixIcon: Icons.title,
                                       controller: titleController,
-                                      validationText: "tilte",
+                                      validationText: "title",
                                       onTap: () {},
                                     ),
                                     DefaultTextFormField(
@@ -118,7 +118,7 @@ class HomeLayout extends StatelessWidget {
                                         showDatePicker(
                                           context: context,
                                           firstDate: DateTime.now(),
-                                          lastDate: DateTime.parse('2025-07-01'),
+                                          lastDate: DateTime.parse('2027-07-01'),
                                         ).then((value) {
                                           print(
                                               DateFormat.yMMMd().format(value!));

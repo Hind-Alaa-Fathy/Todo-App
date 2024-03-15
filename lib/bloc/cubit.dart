@@ -106,7 +106,7 @@ class TodoCubit extends Cubit<TodoStates>
      });
   }
 
-  void updateData({
+  void updateStatus({
     required String status,
     required int id,
 })async
@@ -115,11 +115,66 @@ class TodoCubit extends Cubit<TodoStates>
         'UPDATE tasks SET status = ? WHERE id = ?',
         [status, id]).then((value) {
          getDataFromDatabase(database);
-          emit(TodoUpdateDatabaseState());
+          emit(TodoUpdateStatusDatabaseState());
 
     });
   }
 
+  bool isTaskEditing = false;
+  int editingTaskId = 0;
+
+  void startEditing(int id) {
+    isTaskEditing = true;
+    editingTaskId = id;
+    emit(TodoStartEditingState());
+  }
+
+  void stopEditing() {
+    isTaskEditing = false;
+    editingTaskId = 0;
+    emit(TodoStopEditingState());
+  }
+
+  bool isEditing(int id) {
+    return isTaskEditing && editingTaskId == id;
+  }
+  void updateTitle({
+     required String title,
+    required int id,
+  })async
+  {
+    database.rawUpdate(
+        'UPDATE tasks SET title = ? WHERE id = ?',
+        [title,id]).then((value) {
+      getDataFromDatabase(database);
+      emit(TodoUpdateTitleDatabaseState());
+
+    });
+  }  void updateDate({
+     required String date,
+    required int id,
+  })async
+  {
+    database.rawUpdate(
+        'UPDATE tasks SET date = ? WHERE id = ?',
+        [date, id]).then((value) {
+      getDataFromDatabase(database);
+      emit(TodoUpdateDateDatabaseState());
+
+    });
+  }  void updateTime({
+     required String time,
+    required int id,
+  })async
+  {
+    database.rawUpdate(
+        'UPDATE tasks SET time = ? WHERE id = ?',
+        [time, id]).then((value) {
+      getDataFromDatabase(database);
+      emit(TodoUpdateTimeDatabaseState());
+
+    });
+  }
 
   void deleteData({
     required int id,

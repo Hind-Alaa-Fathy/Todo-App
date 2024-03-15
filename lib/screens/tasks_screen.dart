@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/Shared_component/taskItem.dart';
 import 'package:todo_app/bloc/cubit.dart';
 import 'package:todo_app/bloc/states.dart';
+import '../Shared_component/taskItem.dart';
 
 class NewTask extends StatelessWidget {
   const NewTask({super.key});
